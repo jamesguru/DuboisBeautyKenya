@@ -20,6 +20,8 @@ const sendTimetableEmail = async () => {
         let emailSent = false;
         
         try {
+
+          console.log(`Generating timetable for ${request.email}...`);
           // Generate personalized skincare routine
           const routine = generateSkincareRoutine(
             request.skinType,
@@ -61,8 +63,14 @@ const sendTimetableEmail = async () => {
             ]
           };
 
+
+          console.log(`Sending email to ${request.email}...`);
+
+
           // Send email and wait for result
           const result = await sendMail(messageOptions);
+
+          console.log(`Email send result for ${request.email}:`, result);
           
           if (result.success) {
             // Update request status to processed only if email was sent successfully
