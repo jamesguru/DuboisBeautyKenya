@@ -19,11 +19,14 @@ let configurations = {
 
 const sendMail = async (messageoption) => {
   const transporter = await createTransporter(configurations);
+  console.log("Verifying transporter...");
   await transporter.verify();
+  console.log("Transporter verified. Sending email...");
   await transporter.sendMail(messageoption, (error, info) => {
     if (error) {
       console.log(error);
     }
+    console.log("Email sent: " + info.response);
     console.log(info.response);
   });
 };
