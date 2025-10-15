@@ -18,6 +18,7 @@ let configurations = {
 };
 
 const sendMail = async (messageoption) => {
+  console.log("Creating transporter...", configurations, messageoption);
   const transporter = await createTransporter(configurations);
   console.log("Verifying transporter...");
   await transporter.verify();
